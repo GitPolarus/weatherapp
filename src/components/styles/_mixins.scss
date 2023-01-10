@@ -1,0 +1,13 @@
+/**
+d:direction
+js:justify-content
+ai: align-items
+w: flew-wrap
+*/
+@mixin flex($d: row, $jc: space-between, $ai: center, $w: wrap) {
+  display: flex;
+  direction: $d;
+  justify-content: $jc;
+  align-items: $ai;
+  flex-wrap: $w;
+}
