@@ -33,18 +33,52 @@
   .infos {
     @include flex();
     background-color: rgba(5, 236, 140, 0.625);
-    height: 30vh;
+    height: 35vh;
     width: 100%;
     position: absolute;
     bottom: 0;
     left: 0;
-    padding: 20px;
+    padding: 0 20px;
+    overflow: hidden;
+    gap: 10px;
+    color: white;
+    .description {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .current-details {
+      flex: 1 0 25%;
+    }
+    .days-info {
+      flex: 1 0 70%;
+      @include flex($jc: flex-start, $w: nowrap);
+      overflow-y: hidden;
+      max-width: 70%;
+      max-height: 100%;
+
+      // gap: 10px;
+      &::-webkit-scrollbar-thumb {
+        background-color: white;
+      }
+      &::-webkit-scrollbar-track {
+        background-color: rgb(0, 21, 84);
+      }
+      &::-webkit-scrollbar {
+        height: 5px;
+        padding: 5px;
+      }
+    }
   }
   .day-info {
     text-align: center;
     color: white;
-    padding: 10px;
-    box-shadow: 0px 1px 5px white;
+    height: 100%;
+    padding: 20px;
+    width: 300px;
+    flex: 1 0 30%;
+    border-right: 1px solid white;
+    border-left: 1px solid white;
+    // box-shadow: 0px 1px 5px white;
     h2 {
       margin: 4px;
     }
@@ -58,7 +92,7 @@
     color: white;
 
     .temp {
-      font-size: 2rem;
+      font-size: 3rem;
       font-weight: 700;
     }
     .location {
@@ -68,27 +102,55 @@
       text-transform: capitalize;
     }
 
-    .form {
-      input {
-        border: none;
-        padding: 10px;
-        font-size: 1.1rem;
-        border-radius: 20px 0 0 20px;
-        &:focus {
-          outline: none;
-        }
+    .date {
+      @include flex($d: column, $jc: center, $ai: flex-start);
+      gap: 5px;
+      .month {
+        text-transform: capitalize;
+        letter-spacing: 3px;
+        font-size: 1.4rem;
+        margin: 3px;
       }
-      button {
-        font-size: 1.1rem;
-        color: white;
-        border-radius: 0 20px 20px 0;
-        border: none;
-        padding: 10px;
-        background-color: rgb(5, 236, 140);
-        cursor: pointer;
-        &:hover {
-          filter: brightness(90%);
-        }
+      .dash {
+        content: "";
+        width: 15px;
+        height: 5px;
+        background-color: white;
+        display: block;
+      }
+      .day {
+        margin: 0;
+        font-size: 2rem;
+      }
+    }
+  }
+
+  .form {
+    position: absolute;
+    top: 20vh;
+    width: 100%;
+    text-align: center;
+
+    input {
+      border: none;
+      padding: 10px;
+      padding-left: 20px;
+      font-size: 1.1rem;
+      border-radius: 20px 0 0 20px;
+      &:focus {
+        outline: none;
+      }
+    }
+    button {
+      font-size: 1.1rem;
+      color: white;
+      border-radius: 0 20px 20px 0;
+      border: none;
+      padding: 10px;
+      background-color: rgb(5, 236, 140);
+      cursor: pointer;
+      &:hover {
+        filter: brightness(90%);
       }
     }
   }
